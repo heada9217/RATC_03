@@ -1,10 +1,7 @@
-#import statements
-import math 
+import math
 import pandas
 
 
-
-#functions go here
 def yes_no(question):
 
     yes_no_answers = ["yes", "no","y","n"]
@@ -32,7 +29,7 @@ def int_check(question, low_num, high_num):
         try:
             response = int(input(question)) 
             
-            if low_num <= response <= high_num:
+            if low_num < response < high_num:
                 return response
             
             else:
@@ -42,6 +39,7 @@ def int_check(question, low_num, high_num):
             print(error)
 
 def string_check(choice, options, error):
+
         for var_list in options:
 
             #if side/angle is one in the list return the full
@@ -55,7 +53,6 @@ def string_check(choice, options, error):
             #if choice is not valid, set is_valid to no 
             else:
                 is_valid = "no"
-                # print(error)
             
         #if the side/angle is not valid ask question again 
         if is_valid == "yes":
@@ -64,16 +61,17 @@ def string_check(choice, options, error):
             print(error)
             return "Invalid choice"
 
-#Checks that user has entered yes / no to a question 
+side_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"], ["hypotenuse", "hyp", "h"]]
+side_error = "Please enter a valid side (o,a,h)"
 
-#Main Routine goes here
+have_side = "Invalid choice"
+while have_side == "Invalid choice":
+#Ask user for a side
+   desired_side = input("What side do you have?").lower()
+   valid_side = string_check(desired_side,side_options,side_error)
 
-    #Ask user for instructions
+if valid_side == "yes":
+    lenght = int_check("How big?: ", 0 , 100)
 
-    #Ask user whether they want to use Radians or Degrees
 
-    #Ask user whether they have 1 or 2 sides
 
-    #Ask which side user wants (AC,AB,BC)
-
-    #If user only has 1 side, ask user for given angle 

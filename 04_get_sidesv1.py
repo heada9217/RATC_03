@@ -1,10 +1,6 @@
-#import statements
-import math 
+import math
 import pandas
 
-
-
-#functions go here
 def yes_no(question):
 
     yes_no_answers = ["yes", "no","y","n"]
@@ -32,7 +28,7 @@ def int_check(question, low_num, high_num):
         try:
             response = int(input(question)) 
             
-            if low_num <= response <= high_num:
+            if low_num < response < high_num:
                 return response
             
             else:
@@ -64,16 +60,59 @@ def string_check(choice, options, error):
             print(error)
             return "Invalid choice"
 
-#Checks that user has entered yes / no to a question 
 
-#Main Routine goes here
+angle_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"]]
+angle_error = "Please enter whether the angle is adjacent or opposite"
 
-    #Ask user for instructions
+#ask user whether they have a hypotenuse or not
+yes_no_hyptonuse = yes_no("Do you have the hypotenuse?")
+#if yes, ask for another length
+if yes_no_hyptonuse == "yes":
+    length_hypotenuse = int_check("What is this length?", 0, 100)
+    
+    #if user has another length, program continues
+    yes_no_side = yes_no("Do you have another side?: ")
+    
+    if yes_no_side == "yes":
+        length_side = int_check("What is this length?", 0, 100)
+    
+    #if user does not have another length, ask for angle
+    else:
+        angle = int_check("Angle?: ", 0, 180)
 
-    #Ask user whether they want to use Radians or Degrees
+#if user does not have hypotenuse, ask for another side
+else:
+    length_side_a = int_check("What is another side?: ", 0, 100)
+    
+    side_b = yes_no("Do you have another side?")
+    
+    #if user has another side, program continues
+    if side_b == "yes":
+        length_side_b = int_check("What is the length?", 0, 100)
+    
+    #if user does not have another side, ask for angle
+    else:
+        angle = int_check("Angle?: ", 0, 180)
 
-    #Ask user whether they have 1 or 2 sides
+        desired_angle = input("Is this angle opposite or adjacent to the given side?").lower()
 
-    #Ask which side user wants (AC,AB,BC)
+        oppo_adj = string_check(desired_angle, angle_options, angle)
 
-    #If user only has 1 side, ask user for given angle 
+
+
+        
+        
+
+            
+
+    
+    
+
+
+
+    
+
+
+
+
+
