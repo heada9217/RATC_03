@@ -1,4 +1,6 @@
 import math
+from this import d
+from xmlrpc.server import SimpleXMLRPCDispatcher
 import pandas
 
 
@@ -46,7 +48,7 @@ def string_check(choice, options, error):
             if choice in var_list:
 
                 #Get full name of side/angle 
-                chosen = var_list[0]
+                chosen = var_list[0].title()
                 is_valid = "yes"
                 break
 
@@ -60,18 +62,98 @@ def string_check(choice, options, error):
         else:
             print(error)
             return "Invalid choice"
+            
 
-side_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"], ["hypotenuse", "hyp", "h"]]
-side_error = "Please enter a valid side (o,a,h)"
 
-have_side = "Invalid choice"
-while have_side == "Invalid choice":
-#Ask user for a side
-   desired_side = input("What side do you have?").lower()
-   valid_side = string_check(desired_side,side_options,side_error)
 
-if valid_side == "yes":
-    lenght = int_check("How big?: ", 0 , 100)
+def get_sides():
+
+    sides = []
+
+
+    side_options = [["opposite", "oppo", "opp", "o"], 
+    ["adjacent", "adj", "a"], 
+    ["hypotenuse", "hyp", "h"],
+    ]
+
+    side_error = "Please enter a valid side (o,a,h)"
+
+    desired_side = ""
+    while desired_side != "xxx":
+
+
+        sides_row = []
+
+        #Ask user for a side
+        desired_side = input("What side do you have?").lower().strip()
+
+        if desired_side == "xxx":
+            return sides
+        
+        #check if desired side is valid
+
+        valid_side = string_check(desired_side,side_options,side_error) 
+
+        #ask user for length size if choice is valid
+        if valid_side != "Invalid choice":
+            side_length = int_check("How big?: ", 0, 100)
+
+        sides_row.append(side_length)
+        sides_row.append(valid_side)
+
+
+        #check that side is not the exit code before adding
+        if valid_side != "xxx" and valid_side != "Invalid choice":
+            sides.append(sides_row)
+        
+        if len(sides) == 2:
+            return sides
+          
+    
+        
+#Main routine    
+
+sides_info = get_sides()
+
+#if user only has 1 side, ask for angle aswell
+if len(sides_info) == 1:
+        angle = int_check("Angle?: ", 0, 90)
+
+
+
+
+
+for item in sides_info:
+    print(item)
+
+if angle != "":
+    print("Angle: {}".format(angle))
+
+
+    
+
+
+
+    
+    
+
+    
+        
+
+    
+
+
+        
+
+    
+
+    
+    
+
+    
+
+
+
 
 
 

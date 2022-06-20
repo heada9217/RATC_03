@@ -135,15 +135,3 @@ angle_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"]]
 angle_error = "Please enter whether the angle is adjacent or opposite"
 
 minimum_error = "You do not have enough information to find the sides of the right angled triangle."
-
-hypotenuse = get_side("hypotenuse")
-if hypotenuse == "no":
-    side_a = get_side(1)
-    if side_a == "yes":
-        side_b = get_side(2)
-        if side_b == "yes":
-            
-
-
-
-
