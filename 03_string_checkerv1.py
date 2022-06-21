@@ -27,7 +27,10 @@ side_error = "Please enter a valid side"
 #holds valid sides
 valid_sides = ["AB"], ["AC"], ["BC"]
 
-for item in range (0,6):
-    desired_side = input("Which side is this length?(AB, AC, BC): ")
+for item in range (0,3):
+    desired_side = input("Which side is this length?(AB, AC, BC): ").upper()
 
     which_side = string_check(desired_side, valid_sides, side_error)
+
+    if which_side != "Invalid choice":
+        print("valid answer")

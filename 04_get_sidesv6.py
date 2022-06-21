@@ -29,7 +29,7 @@ def int_check(question, low_num, high_num):
     while not valid:
 
         try:
-            response = int(input(question)) 
+            response = float(input(question)) 
             
             if low_num < response < high_num:
                 return response
@@ -70,6 +70,8 @@ def get_sides():
 
     sides = []
 
+    used_sides = []
+
 
     side_options = [["opposite", "oppo", "opp", "o"], 
     ["adjacent", "adj", "a"], 
@@ -80,6 +82,8 @@ def get_sides():
 
     desired_side = ""
     while desired_side != "xxx":
+
+
 
         sides_row = []
 
@@ -93,6 +97,11 @@ def get_sides():
 
         valid_side = string_check(desired_side,side_options,side_error)
 
+
+        #checks if valid side has been used before
+        if valid_side in used_sides:
+            print("You cannot have 2 of the same side.")
+            valid_side = "Invalid choice"
         
         
         #ask user for length size if choice is valid
@@ -100,13 +109,17 @@ def get_sides():
 
             side_length = int_check("How big?: ", 0, 100)
             
+            #add amount to side row and side length to side row and used_sides
             sides_row.append(side_length)
             sides_row.append(valid_side)
+
+            used_sides.append(valid_side)
         
         #check that side is not the exit code before adding
         if valid_side != "xxx" and valid_side != "Invalid choice":
             sides.append(sides_row)
-   
+        
+        #if user has already given 2 sides, continue
         if len(sides) == 2:
             return sides
 
@@ -119,6 +132,8 @@ def get_sides():
 sides_info = get_sides()
 angle = ""
 
+print("***Current Information***")
+
 #if user only has 1 side, ask for angle aswell
 if len(sides_info) == 1:
         angle = int_check("Angle?: ", 0, 90)
@@ -127,7 +142,7 @@ for item in sides_info:
     print(item)
 
 if angle != "":
-    print("Angle: {}".format(angle))
+    print("Angle: {} degrees".format(angle))
 
 
     

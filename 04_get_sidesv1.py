@@ -60,57 +60,75 @@ def string_check(choice, options, error):
             print(error)
             return "Invalid choice"
 
+for item in range (0,5):
 
-angle_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"]]
-angle_error = "Please enter whether the angle is adjacent or opposite"
+    angle_options = [["opposite", "oppo", "opp", "o"], ["adjacent", "adj", "a"]]
+    angle_error = "Please enter whether the angle is adjacent or opposite"
 
-#ask user whether they have a hypotenuse or not
-yes_no_hyptonuse = yes_no("Do you have the hypotenuse?")
-#if yes, ask for another length
-if yes_no_hyptonuse == "yes":
-    length_hypotenuse = int_check("What is this length?", 0, 100)
-    
-    #if user has another length, program continues
-    yes_no_side = yes_no("Do you have another side?: ")
-    
-    if yes_no_side == "yes":
-        length_side = int_check("What is this length?", 0, 100)
-    
-    #if user does not have another length, ask for angle
-    else:
-        angle = int_check("Angle?: ", 0, 180)
+    #ask user whether they have a hypotenuse or not
+    yes_no_hyptonuse = yes_no("Do you have the hypotenuse?")
+    #if yes, ask for another length
+    if yes_no_hyptonuse == "yes":
+        length_hypotenuse = int_check("What is this length?", 0, 100)
+        
+        #if user has another length, program continues
+        yes_no_side = yes_no("Do you have another side?: ")
+        
+        if yes_no_side == "yes":
+            length_side = int_check("What is this length?", 0, 100)
+        
+        #if user does not have another length, ask for angle
+        else:
+            length_side = "unknown"
+            angle = int_check("Angle?: ", 0, 180)
+            print("")
 
-#if user does not have hypotenuse, ask for another side
-else:
-    length_side_a = int_check("What is another side?: ", 0, 100)
     
-    side_b = yes_no("Do you have another side?")
-    
-    #if user has another side, program continues
-    if side_b == "yes":
-        length_side_b = int_check("What is the length?", 0, 100)
-    
-    #if user does not have another side, ask for angle
-    else:
-        angle = int_check("Angle?: ", 0, 180)
-
-        desired_angle = input("Is this angle opposite or adjacent to the given side?").lower()
-
-        oppo_adj = string_check(desired_angle, angle_options, angle)
-
 
 
         
+
+
         
+
+    #if user does not have hypotenuse, ask for another side
+    else:
+        length_hypotenuse = "unknown"
+        
+        length_side_a = int_check("What is another side?: ", 0, 100)
+        
+        side_b = yes_no("Do you have another side?")
+        
+        #if user has another side, program continues
+        if side_b == "yes":
+            length_side_b = int_check("What is the length?", 0, 100)
+        
+        #if user does not have another side, ask for angle
+        else:
+            angle = int_check("Angle?: ", 0, 180)
+
+            desired_angle = input("Is this angle opposite or adjacent to the given side?").lower()
+
+            oppo_adj = string_check(desired_angle, angle_options, angle)
+
+            print("")
+
+  
+
+
+
 
             
+            
 
-    
-    
+                
+
+        
+        
 
 
 
-    
+        
 
 
 
