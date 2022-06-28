@@ -76,12 +76,13 @@ for item in range (0,5):
         
         if yes_no_side == "yes":
             length_side = int_check("What is this length?", 0, 100)
+            print("Information Collected")
         
         #if user does not have another length, ask for angle
         else:
             length_side = "unknown"
             angle = int_check("Angle?: ", 0, 180)
-            print("")
+            print("Information Collected")
 
     
 
@@ -102,6 +103,7 @@ for item in range (0,5):
         #if user has another side, program continues
         if side_b == "yes":
             length_side_b = int_check("What is the length?", 0, 100)
+            print("Information Collected")
         
         #if user does not have another side, ask for angle
         else:
@@ -111,7 +113,7 @@ for item in range (0,5):
 
             oppo_adj = string_check(desired_angle, angle_options, angle)
 
-            print("")
+            print("Information Collected")
 
   
 

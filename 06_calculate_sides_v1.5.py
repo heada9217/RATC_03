@@ -155,6 +155,40 @@ if angle != "":
 # print(length_1)
 # print(type_1)
 
+#begin to calculate sides
+
+opp = ""
+adj = ""
+hyp = ""
+
+side_1 = sides_info[0]
+length_1 = side_1[0]
+type_1 = side_1[1]
+
+if type_1 == "Opposite":
+    opp = length_1
+
+elif type_1 == "Adjacent":
+    adj = length_1
+
+elif type_1 == "Hypotenuse":
+    hyp = length_1
+
+side_2 = sides_info[0]
+length_2 = side_2[0]
+type_2 = side_2[1]
+
+if type_2 == "Opposite":
+    opp = length_2
+
+elif type_2 == "Adjacent":
+    adj = length_2
+
+elif type_2 == "Hypotenuse":
+    hyp = length_2
+
+
+
 
 
     
