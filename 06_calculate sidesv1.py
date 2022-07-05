@@ -81,3 +81,21 @@ def sides_trig(hyp,opp,adj,angle):
         return calculated_sides
 
 
+def angles(hyp, opp):
+    calculated_angles = []
+    
+    angle_1 = math.asin(opp / hyp)
+    angle_1_deg = angle_1 * (180 / math.pi)
+
+    angle_2_deg = 90 - angle_1_deg
+    
+    angle_3_deg = 90
+
+    calculated_angles.append(angle_1_deg)
+    calculated_angles.append(angle_2_deg)
+    calculated_angles.append(angle_3_deg)
+
+    return calculated_angles
+
+    
+    

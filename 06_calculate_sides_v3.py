@@ -188,6 +188,21 @@ def sides_trig(hyp,opp,adj,angle):
         return calculated_sides
 
 
+def angles(hyp, opp):
+    calculated_angles = []
+    
+    angle_1 = math.asin(float(opp) / float(hyp))
+    angle_1_deg = angle_1 * (180 / math.pi)
+
+    angle_2_deg = 90 - angle_1_deg
+
+    calculated_angles.append(angle_1_deg)
+    calculated_angles.append(angle_2_deg)
+
+    return calculated_angles
+
+    
+    
 
         
 #Main routine    
@@ -256,28 +271,52 @@ for item in range(0,6):
 
     if angle == "":
         pythag_side = pythag(hyp, opp, adj)
-
         print("*** Calculated sides ***")
         print(pythag_side)
+
 
     else:
         trig_side = sides_trig(hyp,opp,adj,angle)
         print("*** Calculated sides ***")
         print(trig_side)
 
+    side_trig_1 = trig_side[0]
+    trig_length_1 = side_trig_1[1]
+    type_length_1 = side_trig_1[0]
+
+    if type_length_1 == "Opposite":
+        opp = trig_length_1
+    if type_length_1 == "Adjacent":
+        adj = trig_length_1
+    if type_length_1 == "Hypotenuse":
+        hyp = trig_length_1
+
+    side_trig_2 = trig_side[1]
+    trig_length_2 = side_trig_2[1]
+    type_length_2 = side_trig_2[0]
+    
+    if type_length_2 == "Opposite":
+        opp = trig_length_2
+    if type_length_2 == "Adjacent":
+        adj = trig_length_1
+    if type_length_1 == "Hypotenuse":
+        hyp = trig_length_1
+
+
+        
+        
+    calculated_angles = angles(hyp,opp)
+
+    print("*** Calculated angles ***")
+    print("length 1 (opposite angle) {} degrees".format(calculated_angles[0]))
+    print("length 2: {} degrees".format(calculated_angles[1]))
+    print("length 3: 90 degrees")
 
 
         
 
 
-        
 
-
-
-
-        
-
-        
 
         
         
