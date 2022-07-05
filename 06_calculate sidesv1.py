@@ -22,3 +22,62 @@ print("Adjacent using trigonometry: {}".format(adjacent_trig))
 
 
 #radians -> degrees is (radians) * (math.pi / 100)
+
+def pythag(hyp,opp,adj):
+    if hyp == "":
+        hyp = math.sqrt(adj ** 2 + opp ** 2)
+        return hyp
+
+    if opp == "":
+        opp = math.sqrt(hyp ** 2 - adj **2)
+        return opp
+
+    if adj == "":
+        adj = math.sqrt(hyp ** 2 - opp ** 2)
+        return adj
+
+
+def sides_trig(hyp,opp,adj,angle):
+
+    hyp_row = ["Hypotenuse"]
+    opp_row = ["Opposite"]
+    adj_row = ["Adjacent"]
+
+    calculated_sides = []
+
+
+
+    if hyp != "":
+        opp = math.sin(angle * (math.pi / 100)) * hyp
+        opp_row.append(opp)
+        adj = math.cos(angle) * (math.pi/100) * hyp
+        adj_row.append(adj)
+        
+        calculated_sides.append(opp_row)
+        calculated_sides.append(adj_row)
+
+        return calculated_sides
+
+    if opp != "":
+        adj = opp / math.tan(angle * (math.pi / 180))
+        adj_row.append(adj)
+        hyp = opp / math.sin(angle * (math.pi / 180))
+        hyp_row.append(hyp)
+
+        calculated_sides.append(adj_row)
+        calculated_sides.append(hyp_row)
+
+        return calculated_sides
+
+    if adj != "":
+        opp = math.tan(angle * (math.pi / 180)) * adj
+        opp_row.append(opp)
+        hyp = adj / math.cos(angle * (math.pi / 180))
+        hyp_row.append(hyp)
+
+        calculated_sides.append(opp_row)
+        calculated_sides.append(hyp_row)
+
+        return calculated_sides
+
+
