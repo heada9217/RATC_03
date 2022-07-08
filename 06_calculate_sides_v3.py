@@ -61,9 +61,6 @@ def string_check(choice, options, error):
             print(error)
             return "Invalid choice"
             
-
-
-
 def get_sides():
 
     sides = []
@@ -191,7 +188,7 @@ def sides_trig(hyp,opp,adj,angle):
 def angles(hyp, opp):
     calculated_angles = []
     
-    angle_1 = math.asin(float(opp) / float(hyp))
+    angle_1 = math.asin(opp / hyp)
     angle_1_deg = angle_1 * (180 / math.pi)
 
     angle_2_deg = 90 - angle_1_deg
@@ -207,6 +204,7 @@ def angles(hyp, opp):
         
 #Main routine    
 for item in range(0,6):
+    
     sides_info = get_sides()
     angle = ""
 
@@ -222,29 +220,16 @@ for item in range(0,6):
     if angle != "":
         print("Angle: {} degrees".format(angle))
 
-    # print()
-    # print(sides_info)
-
-
-
-    # side_1 = sides_info[0]
-    # length_1 = side_1[0]
-    # type_1 = side_1[1]
-
-    # print(side_1)
-    # print(length_1)
-    # print(type_1)
-
-    #begin to calculate sides
-
     opp = ""
     adj = ""
     hyp = ""
 
+    # side info is a list including the sides and lengths given.
     side_1 = sides_info[0]
     length_1 = side_1[0]
     type_1 = side_1[1]
 
+    # if sides given is equal to a length, define the side with length amount
     if type_1 == "Opposite":
         opp = length_1
 
@@ -254,6 +239,7 @@ for item in range(0,6):
     elif type_1 == "Hypotenuse":
         hyp = length_1
 
+    # if 2 sides are given, identify second side
     if len(sides_info) == 2:
         side_2 = sides_info[1]
         length_2 = side_2[0]
@@ -268,63 +254,43 @@ for item in range(0,6):
         elif type_2 == "Hypotenuse":
             hyp = length_2
 
-
+    # if user has 2 sides, use pythag to find last side
     if angle == "":
         pythag_side = pythag(hyp, opp, adj)
         print("*** Calculated sides ***")
         print(pythag_side)
 
-
-    else:
+    # if user has 1 side and 1 angle, calculate and identify lengths
+    else: 
         trig_side = sides_trig(hyp,opp,adj,angle)
         print("*** Calculated sides ***")
         print(trig_side)
 
-    side_trig_1 = trig_side[0]
-    trig_length_1 = side_trig_1[1]
-    type_length_1 = side_trig_1[0]
+        side_trig_1 = trig_side[0]
+        trig_length_1 = side_trig_1[1]
+        type_length_1 = side_trig_1[0]
 
-    if type_length_1 == "Opposite":
-        opp = trig_length_1
-    if type_length_1 == "Adjacent":
-        adj = trig_length_1
-    if type_length_1 == "Hypotenuse":
-        hyp = trig_length_1
+        if type_length_1 == "Opposite":
+            opp = trig_length_1
+        if type_length_1 == "Adjacent":
+            adj = trig_length_1
+        if type_length_1 == "Hypotenuse":
+            hyp = trig_length_1
 
-    side_trig_2 = trig_side[1]
-    trig_length_2 = side_trig_2[1]
-    type_length_2 = side_trig_2[0]
-    
-    if type_length_2 == "Opposite":
-        opp = trig_length_2
-    if type_length_2 == "Adjacent":
-        adj = trig_length_1
-    if type_length_1 == "Hypotenuse":
-        hyp = trig_length_1
-
-
+        side_trig_2 = trig_side[1]
+        trig_length_2 = side_trig_2[1]
+        type_length_2 = side_trig_2[0]
         
-        
-    calculated_angles = angles(hyp,opp)
+        if type_length_2 == "Opposite":
+            opp = trig_length_2
+        if type_length_2 == "Adjacent":
+            adj = trig_length_2
+        if type_length_1 == "Hypotenuse":
+            hyp = trig_length_2
+
+        calculated_angles = angles(hyp,opp)
 
     print("*** Calculated angles ***")
     print("length 1 (opposite angle) {} degrees".format(calculated_angles[0]))
     print("length 2: {} degrees".format(calculated_angles[1]))
     print("length 3: 90 degrees")
-
-
-        
-
-
-
-
-        
-        
-
-        
-
-
-
-
-
-
